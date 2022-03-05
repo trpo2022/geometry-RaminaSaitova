@@ -7,7 +7,7 @@ int main()
 {
     int variant, token = 1;
     float p, a1, a2, a3, r, s;
-    whipe (token != 0) { // 
+    while (token != 0) { // 
         printf("Окружность - введите 1.\nТреугольник - введите 2.\nВаш вариант "
                "ответа: ");
         scanf("%d", &variant);
