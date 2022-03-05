@@ -1,19 +1,39 @@
+#include <math.h>
 #include <stdio.h>
-#include <string.h>
 
-int sum(char* s)
-{
-    int res = 0, i;
-    for (i = 0; i < strlen(s); ++i)
-        if ((s[i] >= '0') && (s[i] <= '9')) res += s[i] - '0';
-    return res;
-}
+const float PI = 3.14;
 
-void main()
+int main()
 {
-    char s[100];
-    printf("Vvedite stroku: ");
-    scanf("%s ", &s);
-    printf("The sum is: %d", sum(s));
-    return;
+    int variant, token = 1;
+    float p, a1, a2, a3, r, s;
+    whipe (token != 0) { // 
+        printf("Окружность - введите 1.\nТреугольник - введите 2.\nВаш вариант "
+               "ответа: ");
+        scanf("%d", &variant);
+        if (variant == 1) {
+            printf("\nВведите радиус нужной Вам окружности: ");
+            scanf("%f", &r);
+            s = PI * pow(r, 2);
+            p = 2 * PI * r;
+            printf("\n Площадь = %f\n Периметр = %f", s, p);
+            token = 0;
+        }
+        if (variant == 2) {
+            printf("\nВведите стороны треугольника: ");
+            scanf("%f%f%f", &a1, &a2, &a3);
+            if ((a1 + a2 > a3) && (a1 + a3 > a2) && (a2 + a3 > a1)) {
+                p = a1 + a2 + a3;
+                r = p / 2;
+                s = sqrt(r * (r - a1) * (r - a2) * (r - a3));
+                printf("\nПериметр = %f\nПлощадь = %f", p, s);
+                token = 0;
+            } else {
+                printf("Ошибка! Введите корректные данные!");
+            }
+        } else {
+            printf("Введён неверный номер, повторите попытку снова!");
+            token = 1;
+        }
+    }
 }
